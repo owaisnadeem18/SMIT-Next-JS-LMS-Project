@@ -37,6 +37,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+// Mock data for Trainers
+const trainers = [
+  { id: "trainer1", name: "Sir Inzamam" },
+  { id: "trainer2", name: "Sir Bilal Ahmed" },
+  { id: "trainer3", name: "Sir Hammad Nadeem" },
+];
+
+// Mock data for Courses
+const courses = [
+  { id: "course1", name: "Web and App Development" },
+  { id: "course2", name: "App Development" },
+  { id: "course3", name: "Python Development" },
+];
+
 export function BatchDialog() {
   const [open, setOpen] = useState(false);
   const isDesktop = true;
@@ -45,14 +59,14 @@ export function BatchDialog() {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button variant="outline">Add Course</Button>
+          <Button variant="outline">Add Batch</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Add Course</DialogTitle>
+            <DialogTitle>Add Batch</DialogTitle>
             {/* <DialogDescription>You can add course here...</DialogDescription> */}
           </DialogHeader>
-          <CourseForm />
+          <BatchForm />
         </DialogContent>
       </Dialog>
     );
@@ -61,14 +75,14 @@ export function BatchDialog() {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button variant="outline">Add Course</Button>
+        <Button variant="outline">Add Batch</Button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
-          <DrawerTitle>Add Course</DrawerTitle>
+          <DrawerTitle>Add Batches</DrawerTitle>
           <DrawerDescription>You can add course here...</DrawerDescription>
         </DrawerHeader>
-        <CourseForm className="px-4" />
+        <BatchForm className="px-4" />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
@@ -79,36 +93,58 @@ export function BatchDialog() {
   );
 }
 
-function CourseForm() {
+function BatchForm() {
   return (
     <form className={cn("grid items-start gap-4")}>
       <div className="grid gap-2">
-        <Label htmlFor="course">Course Name</Label>
-        <Input required type="text" id="course" defaultValue="" />
+        <Label htmlFor="BatchName">Batch Name</Label>
+        <Input required type="text" id="BatchName" defaultValue="" />
       </div>
       <div className="grid gap-2">
-        <Label htmlFor="duration">Duration</Label>
-        <Input required type="text" id="duration" defaultValue="" />
-      </div>
-      <div className="grid gap-2">
-        <Label htmlFor="price">Course Price</Label>
-        <Input required id="price" defaultValue="" />
-      </div>
+        <Label htmlFor="CourseName">Course Name</Label>
 
-      <div className="grid gap-2">
-        <Label htmlFor="status" className="mb-1">
-          Course Status
-        </Label>
         <Select required>
           <SelectTrigger>
-            <SelectValue placeholder="Active - Not Active" />
+            <SelectValue placeholder="Offered Courses are..." />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="active">Active</SelectItem>
-            <SelectItem value="not-active">Not Active</SelectItem>
+            {courses.map((item, indx) => (
+              <SelectItem key={indx} value={item}>
+                {item.name}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
       </div>
+      <div className="grid gap-2">
+        <Label htmlFor="status">Course Status</Label>
+
+        <Select required>
+          <SelectTrigger>
+            <SelectValue placeholder="Pending, Completed, Ongoing, Merged" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="pending">Pending</SelectItem>
+            <SelectItem value="completed">Completed</SelectItem>
+            <SelectItem value="ongoing">Ongoing</SelectItem>
+            <SelectItem value="merged">Merged</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="grid gap-2">
+        <Label htmlFor="trainer">Trainer</Label>
+        <Select required>
+          <SelectTrigger>
+            <SelectValue placeholder="Available Trainers are..." />
+          </SelectTrigger>
+          <SelectContent>
+            {trainers.map((item) => (
+              <SelectItem value={item}> {item.name} </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
       <Button type="submit" className="mt-1">
         Add Course
       </Button>
