@@ -1,0 +1,15 @@
+LMS Project in NEXT JS with Tailwind CSS
+
+- Complete Full Stack Project
+
+Users: 
+    Admin , Teacher & Student 
+
+DataBase: 
+    Mongo DB
+
+Features: 
+
+- Courses
+- Assignments 
+- Feedbacks 
