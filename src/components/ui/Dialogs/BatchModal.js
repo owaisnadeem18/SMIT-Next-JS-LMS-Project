@@ -139,7 +139,10 @@ function BatchForm() {
           </SelectTrigger>
           <SelectContent>
             {trainers.map((item) => (
-              <SelectItem value={item}> {item.name} </SelectItem>
+              <SelectItem key={item.id} value={item}>
+                {" "}
+                {item.name}{" "}
+              </SelectItem>
             ))}
           </SelectContent>
         </Select>
