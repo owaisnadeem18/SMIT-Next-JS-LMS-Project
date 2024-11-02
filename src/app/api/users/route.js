@@ -1,6 +1,5 @@
 import { createDB } from "@/lib/dbconnect";
 import { userModal } from "@/lib/modals/UserModal";
-import bcrypt from "bcrypt";
 
 export async function POST(req) {
   await createDB();
@@ -17,11 +16,13 @@ export async function POST(req) {
 
   // Now we have to encrypt the code of our user
 
-  const saltRounds = 10;
-  const hashedPassword = await bcrypt.hash(obj.password, saltRounds);
+  // const saltRounds = 10;
+  // const hashedPassword = await bcrypt.hash(obj.password, saltRounds);
 
-  console.log("my text password: ", obj.password);
-  console.log("my hashed password: ", hashedPassword);
+  // console.log("my text password: ", obj.password);
+  // console.log("my hashed password: ", hashedPassword);
+
+  console.log("my password: ", obj.password);
 
   // ------------------------
 
