@@ -1,14 +1,28 @@
-import { signIn } from "../../../auth";
+import { signIn, auth } from "../../../auth";
+import { redirect } from "next/navigation";
 
-export default function SignIn() {
+export default async function SignIn() {
+  const session = await auth();
+  console.log("session => ", session);
+
+  if (session) redirect('/');
+  
+  
   return (
-    <form
-      action={async () => {
-        "use server";
-        await signIn("google");
-      }}
-    >
-      <button type="submit">Signin with Google</button>
-    </form>
+    <div className="container mx-auto min-h-screen flex items-center justify-center ">
+      <form
+        action={async () => {
+          "use server";
+          await signIn("google");
+        }}
+      >
+        <button
+          className="border border-b-gray-800 bg-slate-800 p-3 rounded-md text-white"
+          type="submit"
+        >
+          Sign-in with Google
+        </button>
+      </form>
+    </div>
   );
 }
