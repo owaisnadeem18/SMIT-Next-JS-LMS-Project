@@ -36,11 +36,11 @@ export async function POST(req) {
 
   console.log(`User Password: ${obj.password}`)
 
-
-
   // -------------------
   
-  // ------------------------
+  
+
+  // -------------------
 
   // Now , here I have to add a new user:
 
