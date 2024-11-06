@@ -20,7 +20,7 @@ export default async function SignIn() {
           className="border border-b-gray-800 bg-slate-800 p-3 rounded-md text-white"
           type="submit"
         >
-          Sign-in with Google
+          Continue with Google
         </button>
       </form>
     </div>
