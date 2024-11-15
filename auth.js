@@ -36,7 +36,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         console.log("credentials => " , credentials)
  
         // return user object with their profile data
-        return user
+        return true
       },
     }),
   ],
@@ -47,10 +47,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       console.log("Profile => " ,profile)
 
       if (account.provider == "google") {
-
-        
-        const user = await isUserLogin(profile)
-        
+        const user = await isUserLogin(profile) 
         return {...profile , role: user.role} // Do different verification for other providers that don't have `email_verified`
       }
     },
