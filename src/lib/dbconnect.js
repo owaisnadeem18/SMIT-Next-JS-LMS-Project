@@ -1,15 +1,34 @@
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
-export async function createDB() {
-  try {
+import mongoose from "mongoose"
+
+// export async function createDB() {
+//   try {
+//     let connection;
+//     console.log("Creating database = ", connection?.connection);
+//     if (connection?.connection?.readystate != 1) {
+//       connection = mongoose.connect(process.env.MONGODB_URL);
+//     }
+
+//     console.log("Database connected ...");
+//   } catch (err) {
+//     console.log("Error connecting to MongoDB:", err);
+//   }
+// }
+
+
+export async function coonectDB() {
+
+  try{
     let connection;
-    console.log("Creating database = ", connection?.connection);
-    if (connection?.connection?.readystate != 1) {
-      connection = mongoose.connect(process.env.MONGODB_URL);
+    console.log("connection?.connection " , connection?.connection)
+    if (connection?.connection?.readyState != 1) {
+      connection = await mongoose.connect(process.env.MONGODB_URL)
+      console.log("MongoDB Connected... ")
     }
 
-    console.log("Database connected ...");
-  } catch (err) {
-    console.log("Error connecting to MongoDB:", err);
+  }
+  catch(err) {
+    console.log("Error connecting MOngo DB is =>>> " , err)
   }
 }

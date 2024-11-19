@@ -205,6 +205,7 @@ export function BatchTable() {
 
   return (
     <div className="w-full container mx-auto">
+
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter By Course Name"
