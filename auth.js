@@ -1,11 +1,11 @@
-import { createDB } from "@/lib/dbconnect";
+import { connectDB } from "@/lib/dbconnect";
 import { userModal } from "@/lib/modals/UserModal";
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials"
 
 const isUserLogin = async (profile) => {
-  await createDB() 
+  await connectDB() 
   const user = await userModal.findOne({email: profile.email})
   if (user) return user
   else {

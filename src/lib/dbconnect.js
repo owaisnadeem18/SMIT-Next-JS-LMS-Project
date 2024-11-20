@@ -17,7 +17,7 @@ import mongoose from "mongoose"
 // }
 
 
-export async function coonectDB() {
+export async function connectDB() {
 
   try{
     let connection;
@@ -26,9 +26,8 @@ export async function coonectDB() {
       connection = await mongoose.connect(process.env.MONGODB_URL)
       console.log("MongoDB Connected... ")
     }
-
   }
   catch(err) {
-    console.log("Error connecting MOngo DB is =>>> " , err)
+    console.log("Error connecting Mongo DB is =>>> " , err)
   }
 }

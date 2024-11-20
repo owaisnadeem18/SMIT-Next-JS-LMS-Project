@@ -1,10 +1,10 @@
-import { createDB } from "@/lib/dbconnect";
+import { connectDB } from "@/lib/dbconnect";
 import { userModal } from "@/lib/modals/UserModal";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
 export async function POST(req) {
-  await createDB();
+  await connectDB() ;
   const obj = await req.json();
   console.log("object =>", obj);
 
