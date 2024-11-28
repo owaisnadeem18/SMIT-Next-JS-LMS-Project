@@ -19,6 +19,7 @@
 // export const userModal =
 //   mongoose.models.Users || mongoose.model("Users", userSchema);
 
+"use client"
 
 import mongoose from "mongoose";
 
