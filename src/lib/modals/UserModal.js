@@ -19,8 +19,6 @@
 // export const userModal =
 //   mongoose.models.Users || mongoose.model("Users", userSchema);
 
-"use client"
-
 import mongoose from "mongoose";
 
 const {Schema} = mongoose
@@ -38,5 +36,5 @@ const userSchema = new Schema({
 
 )
 
-export const userModal = mongoose?.models?.Users || mongoose.model("Users " , userSchema)  
+export const userModal = mongoose?.models?.Users || mongoose.model("Users " , userSchema)   
 

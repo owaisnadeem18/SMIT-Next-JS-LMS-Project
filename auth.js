@@ -2,6 +2,7 @@ import { connectDB } from "@/lib/dbconnect";
 import { userModal } from "@/lib/modals/UserModal";
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
+import GoogleProvider from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials"
 
 const isUserLogin = async (profile) => {
