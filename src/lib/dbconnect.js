@@ -1,33 +1,21 @@
-// import mongoose from "mongoose";
+// First Understand the key points: (How we need to connect the database in this file of dbConnect.js and the function of DBConnect())
 
-import mongoose from "mongoose"
+// 1. Sab say pehlay aik function banay ga DBConnect() ka , us k andar mongoose.connect hoga , or chun k meray pass mongoose aik async function hay jabhi data base connect krtay huay 2 baatain bht achay say dhyan may rehni chahiyein: 
+    // - You must have to use async await in your connect database function.
+    // - Secondly, you are required to use "try" and "catch" in your data base connection function.
 
-// export async function createDB() {
-//   try {
-//     let connection;
-//     console.log("Creating database = ", connection?.connection);
-//     if (connection?.connection?.readystate != 1) {
-//       connection = mongoose.connect(process.env.MONGODB_URL);
-//     }
+import mongoose from "mongoose";
 
-//     console.log("Database connected ...");
-//   } catch (err) {
-//     console.log("Error connecting to MongoDB:", err);
-//   }
-// }
+export async function DBConnect() {
 
-
-export async function connectDB() {
-
-  try{
-    let connection;
-    console.log("connection?.connection " , connection?.connection)
-    if (connection?.connection?.readyState != 1) {
-      connection = await mongoose.connect(process.env.MONGODB_URL)
-      console.log("MongoDB Connected... ")
+    try {
+        console.log("connection?connection => " , connection?.connection)
+        let connection = await mongoose.connect(process.env.MONGODB_URL)
+        if (connection?.connection?.readyState != 1) {
+            console.log("Connection?connection => " , connection)
+        }
     }
-  }
-  catch(err) {
-    console.log("Error connecting Mongo DB is =>>> " , err)
-  }
+    catch(err) {
+        console.log("error => " , err)
+    }
 }
