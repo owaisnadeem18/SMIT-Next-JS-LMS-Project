@@ -2754,9 +2754,9 @@ npmlog@^5.0.1:
     set-blocking "^2.0.0"
 
 oauth4webapi@^3.0.0:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/oauth4webapi/-/oauth4webapi-3.1.2.tgz#f14d9f50c045d9e1091b610b6994a5b113e98dc6"
-  integrity sha512-KQZkNU+xn02lWrFu5Vjqg9E81yPtDSxUZorRHlLWVoojD+H/0GFbH59kcnz5Thdjj7c4/mYMBPj/mhvGe/kKXA==
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/oauth4webapi/-/oauth4webapi-3.1.4.tgz#50695385cea8e7a43f3e2e23bc33ea27faece4a7"
+  integrity sha512-eVfN3nZNbok2s/ROifO0UAc5G8nRoLSbrcKJ09OqmucgnhXEfdIQOR4gq1eJH1rN3gV7rNw62bDEgftsgFtBEg==
 
 object-assign@^4.0.1, object-assign@^4.1.1:
   version "4.1.1"

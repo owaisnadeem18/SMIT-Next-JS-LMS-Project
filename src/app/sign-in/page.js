@@ -56,3 +56,33 @@
 //     </div>
 //   );
 // }
+
+// ============================== 
+
+// Reunderstanding each and everything:
+
+
+import { redirect } from "next/navigation"
+import { auth, signIn } from "../../../auth"
+ 
+export default async function SignIn() {
+
+    const session = await auth()
+    
+    if (session) redirect("/")
+
+    console.log("Session => " , session)
+
+  return (
+    <div className="container mx-auto min-h-screen text-white flex justify-center items-center">
+        <form 
+        action={async () => {
+            "use server"
+            await signIn("google")
+        }}
+        >
+        <button className="bg-slate-700 text-white rounded-lg p-4" type="submit">Signin with Google</button>
+        </form>
+    </div>
+  )
+} 
