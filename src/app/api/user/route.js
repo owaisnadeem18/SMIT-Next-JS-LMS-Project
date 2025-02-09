@@ -29,7 +29,8 @@ export async function POST(request) {
     
     newUser = await newUser.save()
     
-    console.log( "User => " , user)
+    console.log( "User =>  " , user)
+
     console.log("obj => " , obj)
 
     // Now , let's create a json web token for it: 
