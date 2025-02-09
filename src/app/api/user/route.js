@@ -16,7 +16,6 @@ export async function POST(request) {
     obj.password = hashPassword
 
     console.log("hashed password =>" , obj.password )
-
     
     const user = await UserModel.findOne({email: obj.email})
     

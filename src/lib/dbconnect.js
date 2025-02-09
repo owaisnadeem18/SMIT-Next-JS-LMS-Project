@@ -9,7 +9,8 @@ import mongoose from "mongoose";
 export async function DBConnect() {
 
     try {
-        console.log("connection?connection => " , connection?.connection)
+        // console.log("connection?connection => " , connection?.connection)
+        console.log("Connected to dataBase ! ")
         let connection = await mongoose.connect(process.env.MONGODB_URL)
         if (connection?.connection?.readyState != 1) {
             console.log("Connection?connection => " , connection)
