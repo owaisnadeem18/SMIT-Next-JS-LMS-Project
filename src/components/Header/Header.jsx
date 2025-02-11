@@ -7,6 +7,8 @@ const Header = async () => {
 
   const session = await auth()
 
+  console.log("Session in header component => " , session)
+
   return (
     <nav className='flex py-6 items-center justify-between bg-gray-800 text-white px-6'>
       <div className="left-side ">
@@ -20,16 +22,15 @@ const Header = async () => {
           <h2 className='text-green-500 text-2xl bg-white p-2 rounded-lg' >
             {session.user.name}
           </h2>
-          
 
-           <form 
+                <form 
                   action={async () => {
                       "use server"
                       await signOut()
                   }}
                   >
                   <button className="bg-slate-700 text-white rounded-lg p-4" type="submit">Sign Out</button>
-                  </form>
+                </form>
         </div> :
           <Link href={"/sign-in"} className='text-2xl' >
             Sign In

@@ -1,6 +1,7 @@
 import { DBConnect } from "@/lib/dbconnect";
 import { UserModel } from "@/lib/models/UserModel";
 import NextAuth from "next-auth";
+import Credentials from "next-auth/providers/credentials"
 import Google from "next-auth/providers/google";
 
 const handleUserLogin = async (profile) => {
@@ -29,7 +30,20 @@ const handleUserLogin = async (profile) => {
 };
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  providers: [Google],
+  providers: [
+    Google ,
+    Credentials({
+      credentials: {
+        email: {},
+        password: {},
+      },
+      async authorize({ request }) {
+        const response = await fetch(request)
+        if (!response.ok) return null
+        return (await response.json()) ?? null
+      },
+    }),
+  ],
   callbacks: {
     async signIn({ account, profile }) {
       console.log("Account =>", account);
@@ -39,5 +53,31 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       return { ...profile, role: user?.role || "user" };
     },
+
+    async jwt({ token }) {
+      
+      let user = await handleUserLogin(token)
+      
+      console.log("User token -> " , user)
+      
+      console.log("Token dekho zara -> " , token)
+      
+      token._id = user._id
+      token.role = user.role
+
+      if (user) { // User is available during sign-in
+        token.id = user.id
+      }
+      return token
+    },
+    
+    session({ session, token }) {
+      session.user._id = token._id
+      session.user.role = token.role
+      return session
+    },
+  
   },
+    
+
 });

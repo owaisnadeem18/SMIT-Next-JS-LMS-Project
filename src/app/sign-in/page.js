@@ -74,15 +74,37 @@ export default async function SignIn() {
     console.log("Session => " , session)
 
   return (
-    <div className="container mx-auto min-h-screen text-white flex justify-center items-center">
+    <div className="container mx-auto min-h-screen text-white flex flex-col gap-6 justify-center items-center">
+
+      
+    <div className="flex flex-col gap-3 border p-5" >
+
+    <form 
+        action={async (formData) => {
+          "use server"
+          await signIn("credentials", formData)
+        }}
+        >
+
+      <input type="text" required className="p-3 border" placeholder="Enter user name" />
+         <input type="text" required className="p-3 border" placeholder="Enter password" />
+         <button
+          className="border border-b-gray-800 bg-slate-800 p-3 rounded-md text-white"
+          type="submit"
+          >
+          Login to continue
+        </button>
+
+    </div>
         <form 
         action={async () => {
-            "use server"
-            await signIn("google")
+          "use server"
+          await signIn("google")
         }}
         >
         <button className="bg-slate-700 text-white rounded-lg p-4" type="submit">Continue With Google</button>
         </form>
-    </div>
+          
+              </div>
   )
 } 
