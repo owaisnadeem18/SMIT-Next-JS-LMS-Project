@@ -12,11 +12,7 @@ const userSchema = new Schema({
     },
     provider: String,
     profileImg: String,
-    password: { type:String , 
-        required: function() {
-            return !this.provider
-        }
-    } ,
+    password: String ,
     role: {
         type: String , 
         enum: ["user" , "admin"],

@@ -81,7 +81,7 @@ export default async function SignIn() {
             await signIn("google")
         }}
         >
-        <button className="bg-slate-700 text-white rounded-lg p-4" type="submit">Signin with Google</button>
+        <button className="bg-slate-700 text-white rounded-lg p-4" type="submit">Continue With Google</button>
         </form>
     </div>
   )
