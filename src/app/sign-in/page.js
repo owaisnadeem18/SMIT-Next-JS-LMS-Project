@@ -84,16 +84,18 @@ export default async function SignIn() {
           "use server"
           await signIn("credentials", formData)
         }}
-        >
+    >
 
-      <input type="text" required className="p-3 border" placeholder="Enter user name" />
-         <input type="text" required className="p-3 border" placeholder="Enter password" />
+      <input type="text" required className="p-3 my-5 border block" placeholder="Enter user name" />
+         <input type="text" required className="p-3 border block" placeholder="Enter password" />
          <button
-          className="border border-b-gray-800 bg-slate-800 p-3 rounded-md text-white"
+          className="border border-b-gray-800 my-5 mx-auto bg-slate-800 p-3 block rounded-md text-white"
           type="submit"
           >
           Login to continue
         </button>
+
+    </form>
 
     </div>
         <form 
