@@ -8,7 +8,6 @@ const handleUserLogin = async (profile) => {
   try {
     await DBConnect();
     const user = await UserModel.findOne({ email: profile.email });
-
     if (user) {
       return user;
     } else {
@@ -20,7 +19,8 @@ const handleUserLogin = async (profile) => {
         role: "user" // Ensure role is explicitly set
       };
 
-      const newUser = await UserModel.create(obj);
+      let newUser = await UserModel.create(obj);
+      newUser = await newUser.save()
       return newUser;
     }
   } catch (err) {
@@ -37,21 +37,32 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         email: {},
         password: {},
       },
-      async authorize({ request }) {
-        const response = await fetch(request)
-        if (!response.ok) return null
-        return (await response.json()) ?? null
-      },
+      authorize: async (credentials) => {
+        let user = null
+        console.log("Credentials => " , credentials )
+        
+        let res = await fetch("")
+
+        return { email: "abc@test.com" }
+      }
     }),
   ],
   callbacks: {
     async signIn({ account, profile }) {
+
       console.log("Account =>", account);
-      console.log("Profile =>", profile);
 
-      const user = await handleUserLogin(profile);
+      if (account.provider == "google") {
+        console.log("Profile =>", profile);
+        
+        const user = await handleUserLogin(profile);
 
-      return { ...profile, role: user?.role || "user" };
+        return { ...profile, role: user?.role || "user" };
+      
+      }
+
+      return true
+
     },
 
     async jwt({ token }) {
